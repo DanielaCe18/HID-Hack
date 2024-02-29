@@ -1,9 +1,7 @@
 import os
-import py7zr
 import platform
 import getpass
 import shutil
-from send2trash import send2trash
 
 def install_libraries():
     # Installe les librairies en utilisant pip
@@ -43,6 +41,7 @@ def search_files():
         return None
 
 def create_encrypted_archive(file_path, archive_path, password):
+    import py7zr
     #Il cree une archive 7z encrypte avec un mot de passe
     with py7zr.SevenZipFile(archive_path, 'w', password=password) as archive:
         archive.write(file_path)
@@ -56,6 +55,7 @@ def delete_file(file_path):
         print(f"Error deleting file: {e}")
 
 def empty_trash():
+    from send2trash import send2trash
     # il supprime le fichier de maniere permanente sous Linux/windows
     try:
         if platform.system() == "Linux":
